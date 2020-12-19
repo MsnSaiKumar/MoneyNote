@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "843352690016",
+    "firebase_url": "https://mnote-82cfe-default-rtdb.firebaseio.com",
+    "project_id": "mnote-82cfe",
+    "storage_bucket": "mnote-82cfe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843352690016:android:78b9b2a93374ec2486a205",
+        "android_client_info": {
+          "package_name": "com.example.mnote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843352690016-8a3afadk83ghp27aa9pvqljq1kcfjiog.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mnote",
+            "certificate_hash": "661be27a5c585049c52ff0fbf3df91f526afb024"
+          }
+        },
+        {
+          "client_id": "843352690016-bmv05hpff6lu4h9oair4hbj5av0lb2me.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3UQ0r6Ce312CSdD-IVfka56BP7OLcMKI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "843352690016-bmv05hpff6lu4h9oair4hbj5av0lb2me.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
