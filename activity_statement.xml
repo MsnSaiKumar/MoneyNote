@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StatementActivity">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/table"
+      android:layout_marginTop="20sp">
+
+
+        <TableRow>
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:padding="1sp"
+                android:background="@android:color/white"
+                android:text="Date">
+
+            </TextView>
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+
+                android:background="@android:color/white"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="Note">
+
+            </TextView>
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+
+                android:background="@android:color/white"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="Amount">
+
+            </TextView>
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+
+                android:background="@android:color/white"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="Added">
+
+            </TextView>
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:gravity="center_horizontal"
+                android:text="Deducted"
+
+                android:textSize="14sp"
+                android:textStyle="bold">
+
+            </TextView>
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+
+                android:background="@android:color/white"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="Total">
+
+            </TextView>
+
+
+
+
+        </TableRow>
+
+<!--        <TableRow-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+<!--            <ListView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+
+<!--        </TableRow>-->
+
+    </TableLayout>
+
+
+</RelativeLayout>
