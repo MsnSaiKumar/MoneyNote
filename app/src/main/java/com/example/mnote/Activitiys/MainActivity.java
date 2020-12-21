@@ -1,4 +1,4 @@
-package com.example.mnote.login;
+package com.example.mnote.Activitiys;
 
 import androidx.appcompat.app.AppCompatActivity;
 

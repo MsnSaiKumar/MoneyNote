@@ -88,6 +88,7 @@ statement.setOnClickListener(new View.OnClickListener() {
     {
         Intent in =new Intent(getApplicationContext(), StatementActivity.class);
 //       in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        in.putExtra("uid",currentUserId);
         startActivity(in);
 
 
@@ -152,18 +153,7 @@ statement.setOnClickListener(new View.OnClickListener() {
     private void addIntoDatabase(final String noteName, final int amt, final String thisDate,final String thisTime)
     {
 
-        statement.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                Intent in =new Intent(getApplicationContext(),StatementActivity.class);
-                in.putExtra("time",thisTime);
-                in.putExtra("date",thisDate);
-                startActivity(in);
 
-
-            }
-        });
 
 
 

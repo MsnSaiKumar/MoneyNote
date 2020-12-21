@@ -19,7 +19,7 @@
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".Activitiys.StatementActivity" />
         <activity android:name=".Activitiys.HomePage" />
-        <activity android:name=".login.MainActivity">
+        <activity android:name=".Activitiys.MainActivity">
 
         </activity>
     </application>

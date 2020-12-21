@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.mnote.Pojo.Users;
 import com.example.mnote.R;
+import com.example.mnote.Utils.Util;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,30 +28,35 @@ public class StatementActivity extends AppCompatActivity
     ArrayAdapter<String> arrayAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statement);
 
-        String  time  = getIntent().getStringExtra("time");
-        String  date  = getIntent().getStringExtra("date");
 
 
-        refererence = FirebaseDatabase.getInstance().getReference("Users");
+        Intent in = getIntent();
+        String currentUid = in.getStringExtra("uid");
+
+
+        refererence = FirebaseDatabase.getInstance().getReference("Data").child(currentUid)
+        ;
         listview = (ListView) findViewById(R.id.list_view);
         arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,arrayList);
         listview.setAdapter(arrayAdapter);
 
-        refererence.addChildEventListener(new ChildEventListener() {
+//        refererence.add
+
+        refererence.addChildEventListener(new ChildEventListener()
+        {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            String values = snapshot.getValue(Users.class).toString();
+            String values = snapshot.getValue().toString();
+                System.out.println(values);
             arrayList.add(values);
             arrayAdapter.notifyDataSetChanged();
             }
 
-            /*
-            gandu aiyutu alwa hjhgjj j,gkjg
-             */
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
