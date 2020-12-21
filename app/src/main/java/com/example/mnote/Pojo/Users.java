@@ -1,6 +1,4 @@
-package com.example.mnote;
-
-import static com.example.mnote.HomePage.total;
+package com.example.mnote.Pojo;
 
 public class Users
 {

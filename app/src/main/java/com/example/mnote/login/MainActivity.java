@@ -1,4 +1,4 @@
-package com.example.mnote;
+package com.example.mnote.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.mnote.Activitiys.HomePage;
+import com.example.mnote.R;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -25,7 +28,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(getApplicationContext(),HomePage.class);
+                Intent intent = new Intent(getApplicationContext(), HomePage.class);
                 intent.putExtra("Note","add");
 //                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);

@@ -1,4 +1,4 @@
-package com.example.mnote;
+package com.example.mnote.Activitiys;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,24 +9,22 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RemoteViews;
 import android.widget.Toast;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 
+import com.example.mnote.R;
+import com.example.mnote.Utils.Util;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 
 public class HomePage extends AppCompatActivity
@@ -34,6 +32,9 @@ public class HomePage extends AppCompatActivity
     private EditText name,amount;
     private Button add,statement;
     private DatabaseReference ref;
+    private FirebaseAuth mauth;
+    String currentUserId;
+
 
    static int total =0;
      static int updatedBalance;
@@ -50,7 +51,8 @@ public class HomePage extends AppCompatActivity
 
 
 
-
+   mauth = FirebaseAuth.getInstance();
+   currentUserId = mauth.getCurrentUser().getUid();
 
 
         name = (EditText) findViewById(R.id.editText);
@@ -72,7 +74,7 @@ public class HomePage extends AppCompatActivity
         }
 
 
-        ref = FirebaseDatabase.getInstance().getReference().child("Users");
+        ref = FirebaseDatabase.getInstance().getReference().child("Data").child(currentUserId);
 
 
 
@@ -84,7 +86,7 @@ statement.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view)
     {
-        Intent in =new Intent(getApplicationContext(),StatementActivity.class);
+        Intent in =new Intent(getApplicationContext(), StatementActivity.class);
 //       in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(in);
 
@@ -127,13 +129,10 @@ statement.setOnClickListener(new View.OnClickListener() {
         {
 
 
-            Calendar calforDate = Calendar.getInstance();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyy");
-            final String CurrentDate = sdf.format(calforDate.getTime());
+            String CurrentDate = Util.getDate();
+             String  currentTime = Util.getTime();
 
-            Calendar calforTime = Calendar.getInstance();
-            SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
-            final String currentTime = time.format(calforDate.getTime());
+
 
 
 
@@ -189,6 +188,7 @@ statement.setOnClickListener(new View.OnClickListener() {
                 {
 
 
+
                     total = total + amt;
                     updatedBalance = total;
 
@@ -201,7 +201,7 @@ statement.setOnClickListener(new View.OnClickListener() {
 
 
 
-                    ref.child(thisTime).child(thisDate) .updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    ref.child(thisDate).child(thisTime) .updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
 
@@ -242,7 +242,7 @@ statement.setOnClickListener(new View.OnClickListener() {
                     map.put("Value", value);
 
 
-                    ref.child(thisTime).child(thisDate).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    ref.child(thisDate).child(thisTime).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
 
