@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity
             {
                 Intent intent = new Intent(getApplicationContext(),HomePage.class);
                 intent.putExtra("Note","add");
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
 
 
@@ -39,9 +39,10 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+
                 Intent intent1 = new Intent(getApplicationContext(),HomePage.class);
                 intent1.putExtra("Note","update");
-                intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent1);
             }
         });

@@ -35,13 +35,22 @@ public class HomePage extends AppCompatActivity
     private Button add,statement;
     private DatabaseReference ref;
 
+   static int total =0;
+     static int updatedBalance;
 
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+
+
+
+
+
 
 
         name = (EditText) findViewById(R.id.editText);
@@ -49,7 +58,25 @@ public class HomePage extends AppCompatActivity
         add = (Button) findViewById(R.id.add);
         statement = (Button) findViewById(R.id.stmnt);
 
+
+        Intent intent = getIntent();
+        String value = intent.getStringExtra("Note");
+
+        if(value.equals("add"))
+        {
+            add.setText("add");
+        }
+        else
+        {
+            add.setText("update");
+        }
+
+
         ref = FirebaseDatabase.getInstance().getReference().child("Users");
+
+
+
+
 
 
 
@@ -58,7 +85,7 @@ statement.setOnClickListener(new View.OnClickListener() {
     public void onClick(View view)
     {
         Intent in =new Intent(getApplicationContext(),StatementActivity.class);
-        in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//       in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(in);
 
 
@@ -113,20 +140,31 @@ statement.setOnClickListener(new View.OnClickListener() {
 
 
             int  cAmt = Integer.parseInt(amt);
-            int total =0;
-            total = total + cAmt;
 
-            addIntoDatabase(noteName,amt,CurrentDate,currentTime,total);
+
+
+            addIntoDatabase(noteName,cAmt,CurrentDate,currentTime);
 
 
 
         }
     }
 
-    private void addIntoDatabase(final String noteName, final String amt, final String thisDate,final String thisTime,final int total)
+    private void addIntoDatabase(final String noteName, final int amt, final String thisDate,final String thisTime)
     {
 
+        statement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent in =new Intent(getApplicationContext(),StatementActivity.class);
+                in.putExtra("time",thisTime);
+                in.putExtra("date",thisDate);
+                startActivity(in);
 
+
+            }
+        });
 
 
 
@@ -143,13 +181,19 @@ statement.setOnClickListener(new View.OnClickListener() {
 
 
 
+
+
                 System.out.println("hiiiiiiiiiiii man    kfknngnb"+value);
 
                 if(value.equals("add"))
                 {
-                   add.setText("Add");
+
+
+                    total = total + amt;
+                    updatedBalance = total;
+
                     HashMap<String,Object> map = new HashMap<>(0);
-                    map.put("Date : " ,thisDate);
+                    map.put("Date" ,thisDate);
                     map.put("Note",noteName);
                     map.put("Amount",amt);
                     map.put("Total",total);
@@ -174,39 +218,44 @@ statement.setOnClickListener(new View.OnClickListener() {
                     });
                 }
 
-                else
-                {
-                   add.setText("Update");
-
-                    int updatedAmt = Integer.parseInt(amt);
-                    int updatedBalance = total-updatedAmt;
-
-                    HashMap<String,Object> map = new HashMap<>(0);
-                    map.put("Date : " ,thisDate);
-                    map.put("Note",noteName);
-                    map.put("Amount",amt);
-                    map.put("Total",updatedAmt);
-                    map.put("Value",value);
+                else {
 
 
 
+
+
+                    if (amt > updatedBalance) {
+                        amount.setError("Ur balance is less");
+                    }
+
+                   else
+                    {
+                        updatedBalance = total - amt;
+                    total = updatedBalance;
+
+
+                    HashMap<String, Object> map = new HashMap<>(0);
+                    map.put("Date", thisDate);
+                    map.put("Note", noteName);
+                    map.put("Amount", amt);
+                    map.put("Total", updatedBalance);
+                    map.put("Value", value);
 
 
                     ref.child(thisTime).child(thisDate).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
 
-                            if (task.isSuccessful())
-                            {
+                            if (task.isSuccessful()) {
                                 Toast.makeText(HomePage.this, "Note Updated", Toast.LENGTH_SHORT).show();
-                            }
-                            else
-                            {
+                            } else {
                                 Toast.makeText(HomePage.this, "Network error", Toast.LENGTH_SHORT).show();
 
                             }
                         }
                     });
+
+                }
                 }
 
 
