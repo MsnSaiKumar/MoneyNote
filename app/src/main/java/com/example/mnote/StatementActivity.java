@@ -46,6 +46,10 @@ public class StatementActivity extends AppCompatActivity
             arrayAdapter.notifyDataSetChanged();
             }
 
+            /*
+            gandu aiyutu alwa hjhgjj j,gkjg
+             */
+
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
