@@ -10,8 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.mnote.Activitiys.HomePage;
 import com.example.mnote.Activitiys.MainActivity;
 import com.example.mnote.R;
+import com.example.mnote.Utils.Constant;
+import com.example.mnote.Utils.MySharedPreferences;
 import com.example.mnote.Utils.Util;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,20 +25,21 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import android.app.ProgressDialog;
+import android.widget.TextView;
 
 public class SignUp extends AppCompatActivity
 {
 
     private ProgressDialog dialog;
     private FirebaseAuth mauth;
-
+    private MySharedPreferences preferences;
 
 
     @BindView(R.id.register_name) EditText name;
     @BindView(R.id.register_email) EditText email;
     @BindView(R.id.register_pass) EditText pass;
     @BindView(R.id.register) Button register;
-
+    @BindView(R.id.Already_exists) TextView alreadyExistsTV;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -45,13 +49,23 @@ public class SignUp extends AppCompatActivity
         ButterKnife.bind(this);
 
         mauth = FirebaseAuth.getInstance();
+        preferences =  MySharedPreferences.getInstance(this);
+
+        if(preferences.getUserData(Constant.CURRENT_USER_ID).length()>0)
+            startActivity(Util.goToMaineActivity(getApplicationContext(), MainActivity.class));
+
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 createAccount();
+            }
+        });
 
-
+        alreadyExistsTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignUp.this,LoginActivity.class));
             }
         });
 
@@ -76,11 +90,6 @@ public class SignUp extends AppCompatActivity
         else if (TextUtils.isEmpty(inputPass)) {
             pass.setError("please provide proper password");
         } else {
-//            dialog.setTitle("Create Account");
-//            dialog.setMessage("Please wait while we are checking your credentials");
-//            dialog.setCanceledOnTouchOutside(false);
-//            dialog.show();
-
 
             mauth.createUserWithEmailAndPassword(inputEmail,inputPass)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -89,22 +98,16 @@ public class SignUp extends AppCompatActivity
 
                             if(task.isSuccessful())
                             {
-                                Intent intent = new Intent(SignUp.this, MainActivity.class);
-                                startActivity(intent);
-                                Util.toast(SignUp.this,"Succesfully registered");
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            }
+                                String currUser = mauth.getCurrentUser().getUid();
+                                preferences.setUserData(Constant.CURRENT_USER_ID , currUser ); // storing  currUser in  CURRENT_USER_ID //
+                                startActivity(Util.goToMaineActivity(getApplicationContext(),MainActivity.class));
+                               }
                             else
                             {
                                 Util.toast(SignUp.this,"error");
                             }
                         }
                     });
-
-
-
-
-
 
         }
     }

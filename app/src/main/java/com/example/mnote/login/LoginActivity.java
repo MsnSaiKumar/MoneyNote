@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-    private ProgressDialog dialog;
+
     private DatabaseReference ref;
     private FirebaseAuth mauth;
     @BindView(R.id.login_email) EditText email;
@@ -45,13 +45,12 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        dialog = new ProgressDialog(this);
-
+mauth = FirebaseAuth.getInstance();
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createAccount();
+                login();
 
 
             }
@@ -59,26 +58,24 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    private void createAccount() {
-        String inputName = email.getText().toString();
-//        String inputphone = phone.getText().toString();
+    private void login() {
+
+        String inputemail = email.getText().toString();
+
         String inputPass = pass.getText().toString();
 
-        if (TextUtils.isEmpty(inputName))
+        if (TextUtils.isEmpty(inputemail))
         {
-            Toast.makeText(this, "Please fill name", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please fill email", Toast.LENGTH_SHORT).show();
             return;
         } else if (TextUtils.isEmpty(inputPass)) {
             Toast.makeText(this, "Please fill Password", Toast.LENGTH_SHORT).show();
             return;
         } else {
-            dialog.setTitle("Create Account");
-            dialog.setMessage("Please wait while we are checking your credentials");
-            dialog.setCanceledOnTouchOutside(false);
-            dialog.show();
 
 
-        mauth.signInWithEmailAndPassword(inputName,inputPass)
+
+        mauth.signInWithEmailAndPassword(inputemail,inputPass)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
