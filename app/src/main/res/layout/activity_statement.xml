@@ -28,7 +28,7 @@
                 android:layout_weight="1"
                 android:padding="1sp"
                 android:background="@android:color/white"
-                android:text="Date">
+                android:text="Date-Time">
 
             </TextView>
             <TextView
