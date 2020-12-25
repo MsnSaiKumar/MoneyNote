@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/table"
-      android:layout_marginTop="20sp">
+        android:layout_marginTop="20sp">
 
 
         <TableRow>
@@ -22,13 +22,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-
                 android:textStyle="bold"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:padding="1sp"
                 android:background="@android:color/white"
-                android:text="Date-Time">
+                android:text="Date">
 
             </TextView>
             <TextView
@@ -36,10 +35,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-
                 android:background="@android:color/white"
                 android:textStyle="bold"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:text="Note">
 
@@ -49,10 +47,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-
                 android:background="@android:color/white"
                 android:textStyle="bold"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:text="Amount">
 
@@ -62,10 +59,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-
                 android:background="@android:color/white"
                 android:textStyle="bold"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:text="Added">
 
@@ -77,9 +73,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/white"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:text="Deducted"
-
                 android:textSize="14sp"
                 android:textStyle="bold">
 
@@ -89,21 +84,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-
                 android:background="@android:color/white"
                 android:textStyle="bold"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:text="Total">
 
             </TextView>
 
-
-
-
         </TableRow>
-
-
 
     </TableLayout>
 
@@ -118,13 +107,11 @@
 
 
 
-        <ListView
-            android:id="@+id/list_view"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/id_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            ></ListView>
-
-
+            ></androidx.recyclerview.widget.RecyclerView>
 
 
     </LinearLayout>

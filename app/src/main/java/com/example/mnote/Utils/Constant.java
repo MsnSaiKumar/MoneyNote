@@ -14,7 +14,7 @@ public class Constant
             TIMESTAMP = "timestamp" ,
             USER_ID = "user_id",
             TIME = "time" ,
-            DATE = "date" ,
+            DATE = "Date" ,
             FOOD_NAME = "Food" ,
             FOOD_TOTAL_COST = "total_cost_of_the_item_added" ,
             FOOD_INDIVIDUAL_COST = "item_cost" ,
@@ -25,5 +25,12 @@ public class Constant
     CURRENT_USER_ID = "current_user_id",
     ITEMS = "items" ,
             TOTAL_ORDER_REF="total_orders",
-            CURRENT_USER_CLICKED="current_user_clicked";
+            CURRENT_USER_CLICKED="current_user_clicked" ,
+     NOTE="Note" ,
+    AMOUNT = "Amount",
+    ADDED = "added" ,
+    DEDUCTED="deducted" ,
+    TOTAL = "Total" ,
+    VALUE = "Value"
+    ;
 }

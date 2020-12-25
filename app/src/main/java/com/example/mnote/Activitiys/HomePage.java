@@ -13,7 +13,9 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 
+import com.example.mnote.Pojo.Users;
 import com.example.mnote.R;
+import com.example.mnote.Utils.Constant;
 import com.example.mnote.Utils.Util;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -167,29 +169,19 @@ statement.setOnClickListener(new View.OnClickListener() {
                 Intent intent = getIntent();
                 String value = intent.getStringExtra("Note");
 
-
-
-
-
-
                 System.out.println("hiiiiiiiiiiii man    kfknngnb"+value);
 
                 if(value.equals("add"))
                 {
-
-
-
                     total = total + amt;
                     updatedBalance = total;
 
                     HashMap<String,Object> map = new HashMap<>(0);
-                    map.put("Date" ,thisDate);
-                    map.put("Note",noteName);
-                    map.put("Amount",amt);
-                    map.put("Total",total);
-                    map.put("Value",value);
-
-
+                    map.put(Constant.DATE,thisDate);
+                    map.put(Constant.NOTE,noteName);
+                    map.put(Constant.AMOUNT,amt+"");
+                    map.put(Constant.TOTAL,total+"");
+                    map.put(Constant.VALUE,value);
 
                     ref.child(thisDate).child(thisTime) .updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

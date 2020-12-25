@@ -1,27 +1,41 @@
 package com.example.mnote.Pojo;
 
+import com.example.mnote.Utils.Constant;
+
+import java.util.HashMap;
+
 public class Users
 {
-    private String Date;
-    private String Note;
-    private String Amount;
-//    private String added;
-//    private String deducted;
-    private String Total;
+    public String Date;
+    public String Note;
+    public String Amount;
+    public String added;
+    public String deducted;
+    public String Total;
+    public String Value;
 
-    public Users(String date, String note, String Amount, String Total) {
+    public String getValue() {
+        return Value;
+    }
+
+    public void setValue(String value) {
+        Value = value;
+    }
+
+
+
+    public Users(String date, String note, String Amount, String Total , String Value) {
         this.Date = date;
+        this.Value = Value;
         this.Note = note;
         this.Amount = Amount;
-//        this.added = added;
-//        this.deducted = deducted;
+        this.added = added;
+        this.deducted = deducted;
         this.Total = Total;
     }
+
     public Users() {
-
     }
-
-
 
     public String getDate() {
         return Date;
@@ -47,21 +61,21 @@ public class Users
         this.Amount = amount;
     }
 
-//    public String getAdded() {
-//        return added;
-//    }
+    public String getAdded() {
+        return added;
+    }
 
-//    public void setAdded(String added) {
-//        this.added = added;
-//    }
+    public void setAdded(String added) {
+        this.added = added;
+    }
 
-//    public String getDeducted() {
-//        return deducted;
-//    }
+    public String getDeducted() {
+        return deducted;
+    }
 
-//    public void setDeducted(String deducted) {
-//        this.deducted = deducted;
-//    }
+    public void setDeducted(String deducted) {
+        this.deducted = deducted;
+    }
 
     public String getTotal() {
         return Total;
