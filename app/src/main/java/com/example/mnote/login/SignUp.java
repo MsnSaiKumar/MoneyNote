@@ -10,12 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.mnote.Activitiys.HomePage;
 import com.example.mnote.Activitiys.MainActivity;
 import com.example.mnote.R;
-import com.example.mnote.Utils.Constant;
-import com.example.mnote.Utils.MySharedPreferences;
-import com.example.mnote.Utils.Util;
+import com.example.mnote.Activitiys.Constant;
+import com.example.mnote.Activitiys.MySharedPreferences;
+import com.example.mnote.Activitiys.Util;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
