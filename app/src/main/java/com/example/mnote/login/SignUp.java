@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.mnote.Activitiys.HomePage;
-import com.example.mnote.Activitiys.MainActivity;
 import com.example.mnote.R;
 import com.example.mnote.Utils.Constant;
 import com.example.mnote.Utils.MySharedPreferences;

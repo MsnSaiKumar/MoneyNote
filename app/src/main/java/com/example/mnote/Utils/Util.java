@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.example.mnote.Activitiys.HomePage;
-import com.example.mnote.Activitiys.MainActivity;
 
-import java.text.SimpleDateFormat;
 import java.text.SimpleDateFormat;
 import java.time.OffsetTime;
 import java.util.*;
