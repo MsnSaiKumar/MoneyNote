@@ -1,8 +1,4 @@
-package com.example.mnote.Pojo;
-
-import com.example.mnote.Utils.Constant;
-
-import java.util.HashMap;
+package com.example.mnote.Activitiys;
 
 public class Users
 {

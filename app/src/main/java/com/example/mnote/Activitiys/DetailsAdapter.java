@@ -1,4 +1,4 @@
-package com.example.mnote.adapter;
+package com.example.mnote.Activitiys;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mnote.Pojo.Users;
 import com.example.mnote.R;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 

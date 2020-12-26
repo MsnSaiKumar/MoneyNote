@@ -1,4 +1,4 @@
-package com.example.mnote.Utils;
+package com.example.mnote.Activitiys;
 
 import android.app.Activity;
 import android.content.Context;

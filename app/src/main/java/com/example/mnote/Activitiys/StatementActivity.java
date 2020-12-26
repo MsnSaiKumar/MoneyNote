@@ -11,12 +11,9 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.mnote.Pojo.Users;
+
 import com.example.mnote.R;
-import com.example.mnote.Utils.Constant;
-import com.example.mnote.Utils.MySharedPreferences;
-import com.example.mnote.Utils.Util;
-import com.example.mnote.adapter.DetailsAdapter;
+
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

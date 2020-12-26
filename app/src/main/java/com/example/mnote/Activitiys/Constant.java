@@ -1,4 +1,4 @@
-package com.example.mnote.Utils;
+package com.example.mnote.Activitiys;
 
 public class Constant
 {
