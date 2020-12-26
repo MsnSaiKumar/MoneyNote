@@ -211,11 +211,11 @@ statement.setOnClickListener(new View.OnClickListener() {
 
 
                     HashMap<String, Object> map = new HashMap<>(0);
-                    map.put("Date", thisDate);
-                    map.put("Note", noteName);
-                    map.put("Amount", amt);
-                    map.put("Total", updatedBalance);
-                    map.put("Value", value);
+                        map.put(Constant.DATE,thisDate);
+                        map.put(Constant.NOTE,noteName);
+                        map.put(Constant.AMOUNT,amt+"");
+                        map.put(Constant.TOTAL,total+"");
+                        map.put(Constant.VALUE,value);
 
 
                     ref.child(thisDate).child(thisTime).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {

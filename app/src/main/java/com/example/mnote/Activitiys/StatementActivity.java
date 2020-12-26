@@ -70,13 +70,13 @@ public class StatementActivity extends AppCompatActivity
 
                         Users temp_obj = new Users();
 
-                        if(map.containsKey(Constant.DATE))      temp_obj.Date = map.get(Constant.DATE)+"";
-                        if(map.containsKey(Constant.NOTE))      temp_obj.Note = map.get(Constant.NOTE)+"";
-                        if(map.containsKey(Constant.AMOUNT))    temp_obj.Amount = map.get(Constant.AMOUNT)+"";
-                        if(map.containsKey(Constant.ADDED))     temp_obj.added = map.get(Constant.ADDED)+"";
+                        if(map.containsKey(Constant.DATE))      temp_obj.Date = map.get(Constant.DATE+"")+"";
+                        if(map.containsKey(Constant.NOTE))      temp_obj.Note = map.get(Constant.NOTE+"")+"";
+                        if(map.containsKey(Constant.AMOUNT))    temp_obj.Amount = map.get(Constant.AMOUNT+"")+"";
+                        if(map.containsKey(Constant.ADDED))     temp_obj.added = map.get(Constant.ADDED+"")+"";
                         if(map.containsKey(Constant.DEDUCTED))  temp_obj.deducted = map.get(Constant.DEDUCTED)+"";
-                        if(map.containsKey(Constant.TOTAL))     temp_obj.Total = map.get(Constant.TOTAL)+"";
-                        if(map.containsKey(Constant.VALUE))     temp_obj.Value = map.get(Constant.VALUE)+"";
+                        if(map.containsKey(Constant.TOTAL))     temp_obj.Total = map.get(Constant.TOTAL+"")+"";
+                        if(map.containsKey(Constant.VALUE))     temp_obj.Value = map.get(Constant.VALUE+"")+"";
 
                         details_list.add(temp_obj);
 
