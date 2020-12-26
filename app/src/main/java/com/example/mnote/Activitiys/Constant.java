@@ -30,7 +30,9 @@ public class Constant
     AMOUNT = "Amount",
     ADDED = "added" ,
     DEDUCTED="deducted" ,
-    TOTAL = "Total" ,
-    VALUE = "Value"
+    TOTAL = "total" ,
+    VALUE = "Value",
+    UPDATE="update",
+    ADD="add"
     ;
 }

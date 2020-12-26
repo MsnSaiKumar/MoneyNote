@@ -34,10 +34,20 @@ public class DetailsAdapter extends RecyclerView.Adapter <DetailsAdapter.Details
     public void onBindViewHolder(@NonNull DetailsAdapter.DetailsViewHolder holder, int position) {
 
         Users user_details = userDetailsList.get(position);
+
         holder.dateTV.setText(user_details.getDate()+"");
         holder.noteTV.setText(user_details.getNote()+"");
         holder.amountTV.setText(user_details.getAmount()+"");
         holder.totalTV.setText(user_details.getTotal()+"");
+
+        if(user_details.getValue().equals(Constant.ADD)){
+            holder.addedTV.setText("true");
+            holder.deductedTV.setText("....");
+        }
+        else if(user_details.getValue().equals(Constant.DEDUCTED)){
+            holder.addedTV.setText("....");
+            holder.deductedTV.setText("true");
+        }
     }
 
     @Override
@@ -57,7 +67,7 @@ public class DetailsAdapter extends RecyclerView.Adapter <DetailsAdapter.Details
             noteTV = (TextView)mView.findViewById(R.id.id_note);
             amountTV = (TextView)mView.findViewById(R.id.id_amount);
             addedTV = (TextView)mView.findViewById(R.id.id_added);
-            deductedTV = (TextView)mView.findViewById(R.id.id_added);
+            deductedTV = (TextView)mView.findViewById(R.id.id_deducted);
             totalTV = (TextView)mView.findViewById(R.id.id_total);
         }
     }

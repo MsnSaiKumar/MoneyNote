@@ -11,7 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mnote.Activitiys.Constant;
 import com.example.mnote.Activitiys.MainActivity;
+import com.example.mnote.Activitiys.MySharedPreferences;
 import com.example.mnote.R;
 import com.example.mnote.Activitiys.Util;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.login_email) EditText email;
     @BindView(R.id.login_pass) EditText pass;
     @BindView(R.id.login_button) Button login;
+    private MySharedPreferences preferences;
 
 
 
@@ -43,18 +46,22 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
+        preferences = MySharedPreferences.getInstance(this);
 
-mauth = FirebaseAuth.getInstance();
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                login();
+        if(preferences.getUserData(Constant.CURRENT_USER_ID).length()>0)
+            startActivity(Util.goToMaineActivity(getApplicationContext(), MainActivity.class));
 
 
-            }
-        });
-    }
+           mauth = FirebaseAuth.getInstance();
+
+            login.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    login();
+
+                }
+            });
+        }
 
 
     private void login() {
@@ -81,6 +88,8 @@ mauth = FirebaseAuth.getInstance();
 
                 if(task.isSuccessful())
                 {
+                    String currUser = mauth.getCurrentUser().getUid();
+                    preferences.setUserData(Constant.CURRENT_USER_ID , currUser );
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     Util.toast(LoginActivity.this,"Succesfully log In");
