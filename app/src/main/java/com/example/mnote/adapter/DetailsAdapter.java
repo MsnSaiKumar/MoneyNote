@@ -36,6 +36,7 @@ public class DetailsAdapter extends RecyclerView.Adapter <DetailsAdapter.Details
     public void onBindViewHolder(@NonNull DetailsAdapter.DetailsViewHolder holder, int position) {
 
         Users user_details = userDetailsList.get(position);
+
         holder.dateTV.setText(user_details.getDate()+"");
         holder.noteTV.setText(user_details.getNote()+"");
         holder.amountTV.setText(user_details.getAmount()+"");
@@ -47,7 +48,7 @@ public class DetailsAdapter extends RecyclerView.Adapter <DetailsAdapter.Details
         return userDetailsList.size();
     }
 
-    public class DetailsViewHolder  extends RecyclerView.ViewHolder {
+    public  class DetailsViewHolder  extends RecyclerView.ViewHolder {
         View mView;
         TextView dateTV , noteTV , amountTV , addedTV , deductedTV , totalTV;
 
