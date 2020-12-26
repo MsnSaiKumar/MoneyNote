@@ -171,11 +171,11 @@ statement.setOnClickListener(new View.OnClickListener() {
                     updatedBalance = total;
 
                     HashMap<String,Object> map = new HashMap<>(0);
-                    map.put(Constant.DATE,thisDate);
-                    map.put(Constant.NOTE,noteName);
+                    map.put(Constant.DATE,thisDate+"");
+                    map.put(Constant.NOTE,noteName+"");
                     map.put(Constant.AMOUNT,amt+"");
                     map.put(Constant.TOTAL,total+"");
-                    map.put(Constant.VALUE,value);
+                    map.put(Constant.VALUE,value+"");
 
                     ref.child(thisDate).child(thisTime) .updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
